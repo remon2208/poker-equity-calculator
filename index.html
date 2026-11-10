@@ -35,19 +35,19 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
-.wrap{max-width:1080px;margin:0 auto;padding:20px 16px 40px;display:flex;flex-direction:column;gap:16px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.45}
+.wrap{max-width:1160px;margin:0 auto;padding:10px 16px 12px;display:flex;flex-direction:column;gap:10px}
 header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px}
-h1{font-size:22px;margin:0;font-weight:700;text-wrap:balance}
-header p{margin:0;color:var(--muted);font-size:13px}
-.cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;align-items:start}
-@media (max-width:820px){.cols{grid-template-columns:minmax(0,1fr)}}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:16px}
-.col{display:flex;flex-direction:column;gap:16px}
+h1{font-size:18px;margin:0;font-weight:700;text-wrap:balance}
+header p{margin:0;color:var(--muted);font-size:12px}
+.cols{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:10px;align-items:start}
+@media (max-width:620px){.cols{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:10px}
+.col{display:flex;flex-direction:column;gap:10px}
 h2{font-size:13px;font-weight:700;margin:0;color:var(--muted);letter-spacing:.04em}
 .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
 .between{justify-content:space-between}
-.group{display:flex;flex-direction:column;gap:8px}
+.group{display:flex;flex-direction:column;gap:6px}
 
 /* players */
 .players{display:flex;align-items:center;gap:12px}
@@ -57,9 +57,9 @@ h2{font-size:13px;font-weight:700;margin:0;color:var(--muted);letter-spacing:.04
 .step:hover{border-color:var(--felt)}
 
 /* table felt */
-.felt{background:var(--felt-soft);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-wrap:wrap;gap:14px 28px}
+.felt{background:var(--felt-soft);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-wrap:wrap;gap:8px 24px}
 .slots{display:flex;gap:6px;flex-wrap:wrap}
-.slot{width:46px;height:64px;border-radius:7px;border:1.5px dashed var(--muted);background:transparent;color:var(--muted);cursor:pointer;
+.slot{width:42px;height:58px;border-radius:7px;border:1.5px dashed var(--muted);background:transparent;color:var(--muted);cursor:pointer;
   display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--f-num);font-size:22px;font-weight:600;line-height:1;padding:0}
 .slot.filled{background:var(--card);border:1px solid var(--card-edge);color:var(--card-black);box-shadow:0 1px 2px rgba(0,0,0,.18)}
 .slot.filled.red{color:var(--card-red)}
@@ -72,7 +72,7 @@ h2{font-size:13px;font-weight:700;margin:0;color:var(--muted);letter-spacing:.04
 
 /* deck picker */
 .deck{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:3px}
-.pc{height:36px;border-radius:5px;border:1px solid var(--card-edge);background:var(--card);color:var(--card-black);cursor:pointer;padding:0;
+.pc{height:32px;border-radius:5px;border:1px solid var(--card-edge);background:var(--card);color:var(--card-black);cursor:pointer;padding:0;
   font-family:var(--f-num);font-size:16px;font-weight:600;line-height:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .pc.red{color:var(--card-red)}
 .pc .s{font-size:11px;font-family:var(--f-body)}
@@ -83,42 +83,42 @@ h2{font-size:13px;font-weight:700;margin:0;color:var(--muted);letter-spacing:.04
 button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--felt);outline-offset:2px}
 .btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
 .btn:hover{border-color:var(--felt)}
-details{border-top:1px solid var(--line);padding-top:12px}
+details{border-top:1px solid var(--line);padding-top:8px}
 summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--muted)}
 .opps{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:12px}
 .opp{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
 
 /* results */
 .big{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
-.big .num{font-family:var(--f-num);font-size:76px;font-weight:600;line-height:.9;color:var(--felt);font-variant-numeric:tabular-nums}
-.big .unit{font-family:var(--f-num);font-size:30px;color:var(--felt);padding-bottom:4px}
-.big .lab{padding-bottom:8px;color:var(--muted);font-size:13px}
+.big .num{font-family:var(--f-num);font-size:54px;font-weight:600;line-height:.9;color:var(--felt);font-variant-numeric:tabular-nums}
+.big .unit{font-family:var(--f-num);font-size:22px;color:var(--felt);padding-bottom:2px}
+.big .lab{padding-bottom:4px;color:var(--muted);font-size:12px}
 .pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;border:1px solid currentColor}
 .pill.good{color:var(--good)} .pill.bad{color:var(--bad)} .pill.warn{color:var(--warn)}
-.wtl{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--line)}
+.wtl{display:flex;height:10px;border-radius:7px;overflow:hidden;background:var(--line)}
 .wtl i{display:block;height:100%}
 .wtl .w{background:var(--good)} .wtl .t{background:var(--warn)} .wtl .l{background:var(--bad)}
 .legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .legend div{display:flex;flex-direction:column}
-.legend b{font-family:var(--f-num);font-size:26px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums}
+.legend b{font-family:var(--f-num);font-size:20px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums}
 .legend span{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
 .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
 .note{font-size:12px;color:var(--muted);margin:0}
-.dist{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 10px;align-items:center;font-size:13px}
-.dist .bar{height:10px;background:var(--felt-soft);border-radius:5px;overflow:hidden}
-.dist .bar i{display:block;height:100%;background:var(--felt);border-radius:5px}
-.dist .v{font-variant-numeric:tabular-nums;font-family:var(--f-num);font-size:16px;text-align:right;min-width:3.6em}
+.dist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.dist .t{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:4px;padding:4px 6px 6px;white-space:nowrap;background:var(--felt-soft);border-radius:6px;overflow:hidden;font-size:12px}
+.dist .t b{font-variant-numeric:tabular-nums;font-family:var(--f-num);font-size:15px;font-weight:600}
+.dist .t i{position:absolute;left:0;bottom:0;height:3px;background:var(--felt)}
 .odds{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:end}
-.addpot{width:40px;height:40px;font-size:22px;font-weight:700;color:var(--felt);border-color:var(--felt)}
+.addpot{width:34px;height:34px;font-size:22px;font-weight:700;color:var(--felt);border-color:var(--felt)}
 .odds label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
-.odds input{font:inherit;font-size:16px;padding:7px 9px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.odds input{font:inherit;font-size:15px;padding:5px 9px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.chips{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 2px;font:inherit;font-size:13px;cursor:pointer;display:flex;flex-direction:column;align-items:center;line-height:1.25;white-space:nowrap}
 .chip:hover{border-color:var(--felt)}
 .chip small{color:var(--muted);font-size:12px}
 .chip.on{background:var(--felt);border-color:var(--felt);color:var(--on-felt)}
 .chip.on small{color:var(--on-felt)}
-.verdict{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:14px}
+.verdict{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;font-size:13px}
 .empty{color:var(--muted);font-size:14px;padding:10px 0}
 [hidden]{display:none!important}
 </style>
@@ -177,7 +177,7 @@ summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--muted)}
       <section class="panel" aria-live="polite">
         <h2>勝率 <span class="cap" id="ctx"></span></h2>
         <div class="empty" id="emptyMsg" hidden>請先選好你的兩張手牌。</div>
-        <div id="res" class="group" style="gap:14px">
+        <div id="res" class="group" style="gap:8px">
           <div class="big">
             <span class="num" id="eq">–</span><span class="unit">%</span>
             <span class="lab">底池權益（勝率＋平分份額）<br><span id="vsBase"></span></span>
@@ -198,18 +198,14 @@ summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--muted)}
       </section>
 
       <section class="panel" id="oddsPanel">
-        <h2>底池賠率：這個注該不該跟</h2>
-        <div class="group">
-          <span class="cap">對手下注多大？點一下即可，括號內是跟注需要的勝率</span>
-          <div class="chips" id="chips"></div>
-        </div>
+        <h2>底池賠率 <span class="cap">括號為跟注所需勝率</span></h2>
+        <div class="chips" id="chips"></div>
         <div class="odds">
-          <label for="pot">對手下注前的底池<input id="pot" type="number" min="0" step="1" value="100" inputmode="decimal"></label>
+          <label for="pot">下注前底池<input id="pot" type="number" min="0" step="1" value="100" inputmode="decimal"></label>
           <button class="step addpot" id="addPot" type="button" title="把下注金額加進底池" aria-label="把下注金額加進底池">+</button>
-          <label for="call">對手下注（你要跟的金額）<input id="call" type="number" min="0" step="1" value="50" inputmode="decimal"></label>
+          <label for="call">對手下注<input id="call" type="number" min="0" step="1" value="50" inputmode="decimal"></label>
         </div>
         <div class="verdict" id="verdict"></div>
-        <p class="note">未指定的對手以隨機手牌計算。實際上會下注的對手通常牌力較強，真實勝率會比這裡低一些。</p>
       </section>
     </div>
   </div>
@@ -406,10 +402,10 @@ function makeSim(cfg){
     var base=1/st.players, diff=(eq-base)*100;
     $('vsBase').innerHTML='平均值 '+pct(base)+'%　<span class="pill '+(diff>=0?'good':'bad')+'">'+(diff>=0?'高 ':'低 ')+Math.abs(diff).toFixed(1)+' 點</span>';
     var err=1.96*Math.sqrt(eq*(1-eq)/n)*100;
-    $('simNote').textContent=(done?'已模擬 ':'模擬中 ')+n.toLocaleString()+' 手牌局，誤差約 ±'+err.toFixed(1)+'%。';
+    $('simNote').textContent=(done?'已模擬 ':'模擬中 ')+n.toLocaleString()+' 手，誤差 ±'+err.toFixed(1)+'%。未指定的對手視為隨機，實戰勝率通常略低。';
     var h='';
     for(var c=8;c>=0;c--){ var p=a.cat[c]/n;
-      h+='<span>'+CATS[c]+'</span><span class="bar"><i style="width:'+pct(p,2)+'%"></i></span><span class="v">'+(p>0&&p<0.0005?'<0.1':pct(p))+'%</span>';
+      h+='<div class="t"><span>'+CATS[c]+'</span><b>'+(p>0&&p<0.0005?'<0.1':pct(p))+'%</b><i style="width:'+pct(p,2)+'%"></i></div>';
     }
     $('dist').innerHTML=h;
     odds();
@@ -437,7 +433,7 @@ function makeSim(cfg){
   $('oppBox').addEventListener('toggle',function(){ if(order().indexOf(st.active)<0) st.active=nextEmpty('h0'); render(); });
   [['1/3 池',1/3],['半池',0.5],['2/3 池',2/3],['滿池',1],['2 倍池',2]].forEach(function(d){
     var b=document.createElement('button'); b.type='button'; b.className='chip'; b.dataset.f=d[1];
-    b.innerHTML=d[0]+' <small>('+(d[1]/(1+2*d[1])*100).toFixed(0)+'%)</small>';
+    b.innerHTML='<span>'+d[0]+'</span><small>('+(d[1]/(1+2*d[1])*100).toFixed(0)+'%)</small>';
     b.addEventListener('click',function(){
       var pot=parseFloat($('pot').value); if(!(pot>0)){pot=100;$('pot').value=100}
       $('call').value=Math.round(pot*d[1]*10)/10; odds();
@@ -446,7 +442,7 @@ function makeSim(cfg){
   });
   $('addPot').addEventListener('click',function(){
     var pot=parseFloat($('pot').value)||0, call=parseFloat($('call').value)||0;
-    $('pot').value=Math.round((pot+call)*10)/10; odds();
+    $('pot').value=Math.round((pot+call)*10)/10; $('call').value=''; $('call').focus(); odds();
   });
   $('pot').addEventListener('input',odds); $('call').addEventListener('input',odds);
 
