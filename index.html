@@ -111,6 +111,12 @@ summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--muted)}
 .odds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .odds label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
 .odds input{font:inherit;font-size:16px;padding:7px 9px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.chip:hover{border-color:var(--felt)}
+.chip small{color:var(--muted);font-size:12px}
+.chip.on{background:var(--felt);border-color:var(--felt);color:var(--on-felt)}
+.chip.on small{color:var(--on-felt)}
 .verdict{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:14px}
 .empty{color:var(--muted);font-size:14px;padding:10px 0}
 [hidden]{display:none!important}
@@ -192,9 +198,13 @@ summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--muted)}
 
       <section class="panel" id="oddsPanel">
         <h2>底池賠率：這個注該不該跟</h2>
+        <div class="group">
+          <span class="cap">對手下注多大？點一下即可，括號內是跟注需要的勝率</span>
+          <div class="chips" id="chips"></div>
+        </div>
         <div class="odds">
-          <label for="pot">目前底池（含對手下注）<input id="pot" type="number" min="0" step="1" value="100" inputmode="decimal"></label>
-          <label for="call">你需要跟注的金額<input id="call" type="number" min="0" step="1" value="50" inputmode="decimal"></label>
+          <label for="pot">對手下注前的底池<input id="pot" type="number" min="0" step="1" value="100" inputmode="decimal"></label>
+          <label for="call">對手下注（你要跟的金額）<input id="call" type="number" min="0" step="1" value="50" inputmode="decimal"></label>
         </div>
         <div class="verdict" id="verdict"></div>
         <p class="note">未指定的對手以隨機手牌計算。實際上會下注的對手通常牌力較強，真實勝率會比這裡低一些。</p>
@@ -404,9 +414,10 @@ function makeSim(cfg){
   }
   function odds(){
     var pot=parseFloat($('pot').value), call=parseFloat($('call').value), v=$('verdict');
+    document.querySelectorAll('.chip').forEach(function(c){ c.classList.toggle('on', pot>0&&call>0&&Math.abs(call/pot-(+c.dataset.f))<0.006); });
     if(last==null) return;
-    if(!(pot>=0)||!(call>0)){ v.innerHTML='<span class="cap">輸入底池與跟注金額（跟注金額需大於 0）。</span>'; return; }
-    var need=call/(pot+call), ev=last*(pot+call)-call, ok=last>=need;
+    if(!(pot>=0)||!(call>0)){ v.innerHTML='<span class="cap">輸入底池與對手下注金額（下注需大於 0）。</span>'; return; }
+    var need=call/(pot+2*call), ev=last*(pot+2*call)-call, ok=last>=need;
     v.innerHTML='<span class="pill '+(ok?'good':'bad')+'">'+(ok?'跟注划算':'跟注不划算')+'</span>'+
       '<span>需要勝率 <b>'+pct(need)+'%</b>，你有 <b>'+pct(last)+'%</b>；每次跟注期望值 '+(ev>=0?'+':'−')+Math.abs(ev).toFixed(1)+'</span>';
   }
@@ -422,6 +433,15 @@ function makeSim(cfg){
     st.active='h0'; render(); schedule();
   });
   $('oppBox').addEventListener('toggle',function(){ if(order().indexOf(st.active)<0) st.active=nextEmpty('h0'); render(); });
+  [['1/3 池',1/3],['半池',0.5],['2/3 池',2/3],['滿池',1],['2 倍池',2]].forEach(function(d){
+    var b=document.createElement('button'); b.type='button'; b.className='chip'; b.dataset.f=d[1];
+    b.innerHTML=d[0]+' <small>('+(d[1]/(1+2*d[1])*100).toFixed(0)+'%)</small>';
+    b.addEventListener('click',function(){
+      var pot=parseFloat($('pot').value); if(!(pot>0)){pot=100;$('pot').value=100}
+      $('call').value=Math.round(pot*d[1]*10)/10; odds();
+    });
+    $('chips').appendChild(b);
+  });
   $('pot').addEventListener('input',odds); $('call').addEventListener('input',odds);
 
   buildDeck(); render(); schedule();
