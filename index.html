@@ -108,7 +108,8 @@ summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--muted)}
 .dist .bar{height:10px;background:var(--felt-soft);border-radius:5px;overflow:hidden}
 .dist .bar i{display:block;height:100%;background:var(--felt);border-radius:5px}
 .dist .v{font-variant-numeric:tabular-nums;font-family:var(--f-num);font-size:16px;text-align:right;min-width:3.6em}
-.odds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.odds{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:end}
+.addpot{width:40px;height:40px;font-size:22px;font-weight:700;color:var(--felt);border-color:var(--felt)}
 .odds label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
 .odds input{font:inherit;font-size:16px;padding:7px 9px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
@@ -204,6 +205,7 @@ summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--muted)}
         </div>
         <div class="odds">
           <label for="pot">對手下注前的底池<input id="pot" type="number" min="0" step="1" value="100" inputmode="decimal"></label>
+          <button class="step addpot" id="addPot" type="button" title="把下注金額加進底池" aria-label="把下注金額加進底池">+</button>
           <label for="call">對手下注（你要跟的金額）<input id="call" type="number" min="0" step="1" value="50" inputmode="decimal"></label>
         </div>
         <div class="verdict" id="verdict"></div>
@@ -441,6 +443,10 @@ function makeSim(cfg){
       $('call').value=Math.round(pot*d[1]*10)/10; odds();
     });
     $('chips').appendChild(b);
+  });
+  $('addPot').addEventListener('click',function(){
+    var pot=parseFloat($('pot').value)||0, call=parseFloat($('call').value)||0;
+    $('pot').value=Math.round((pot+call)*10)/10; odds();
   });
   $('pot').addEventListener('input',odds); $('call').addEventListener('input',odds);
 
