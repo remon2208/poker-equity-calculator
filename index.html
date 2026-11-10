@@ -151,6 +151,7 @@ summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--muted)}
           <div class="row between">
             <h2>牌組</h2>
             <div class="row">
+              <button class="btn" id="clearHero" type="button">清空手牌</button>
               <button class="btn" id="clearBoard" type="button">清空公牌</button>
               <button class="btn" id="resetAll" type="button">全部清空</button>
             </div>
@@ -413,6 +414,7 @@ function makeSim(cfg){
   $('players').addEventListener('input',function(){setPlayers(+this.value)});
   $('minus').addEventListener('click',function(){setPlayers(st.players-1)});
   $('plus').addEventListener('click',function(){setPlayers(st.players+1)});
+  $('clearHero').addEventListener('click',function(){st.hero=[null,null];st.active='h0';render();schedule()});
   $('clearBoard').addEventListener('click',function(){st.board=[null,null,null,null,null];st.active='b0';render();schedule()});
   $('resetAll').addEventListener('click',function(){
     st.hero=[null,null]; st.board=[null,null,null,null,null];
